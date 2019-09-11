@@ -49,7 +49,7 @@ class CarController extends Controller
         return view('pages.cars.show', compact('car'));
     }
 
-    public function destroy(\App\Model\Car\Car $car){
+    public function destroy(Car $car){
         $car->delete();
         return redirect(route('added_cars'));
     }

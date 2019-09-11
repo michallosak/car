@@ -2,13 +2,14 @@
 
 
 namespace App\Supports\Category;
-
+use App\Model\Category;
 
 class EditCategory
 {
     public function update($request, $data){
-        $data->update($request->only([
-            'name' => $request->name
-        ]));
+        Category::where('id', $data->id)
+            ->update([
+                'name' => $request->name
+            ]);
     }
 }

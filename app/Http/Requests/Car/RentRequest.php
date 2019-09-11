@@ -24,7 +24,8 @@ class RentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'from' => 'required',
+            'to' => 'required'
         ];
     }
 }

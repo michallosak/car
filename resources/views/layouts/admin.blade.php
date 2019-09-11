@@ -13,7 +13,7 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="{{ route('category.create') }}">Add</a>
-            <a class="dropdown-item" href="">Added</a>
+            <a class="dropdown-item" href="{{ route('categories') }}">Added</a>
         </div>
     </li>
 </ul>

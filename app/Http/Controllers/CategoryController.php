@@ -39,9 +39,21 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, Category $category){
         $this->editCategory->update($request, $category);
+        return redirect(route('categories'));
     }
 
     public function create(){
         return view('admin.pages.category.create');
+    }
+
+    public function destroy(Category $category){
+        $category->delete();
+        $category->cars()->delete();
+        return redirect()->back();
+    }
+
+    public function edit($id){
+        $category = $this->getCategory->findCategory($id);
+        return view('admin.pages.category.edit', compact('category'));
     }
 }

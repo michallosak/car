@@ -30,4 +30,9 @@ class GetCategory
         return $cars;
     }
 
+    public function findCategory($id){
+        $category = $this->category->find($id);
+        return $category;
+    }
+
 }
