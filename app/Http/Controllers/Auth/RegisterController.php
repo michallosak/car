@@ -29,18 +29,15 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo;
 
-    private $verifyEmail;
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    private $verify;
+
     public function __construct(VerifyEmail $verifyEmail)
     {
         $this->middleware('guest');
-        $this->verifyEmail = $verifyEmail;
+        $this->verify = $verifyEmail;
+        $this->redirectTo = route('home');
     }
 
     /**
@@ -73,7 +70,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $this->verifyEmail->store($user->id);
+        $this->verify->saveKey($user->id, $user->name, $user->email);
         return $user;
     }
 }

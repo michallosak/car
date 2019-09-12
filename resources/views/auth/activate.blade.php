@@ -26,11 +26,11 @@
                 <div class="col-lg-4 col-md-8 m-auto">
                     <div class="login-page-content">
                         <div class="login-form">
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('activate') }}">
                                 @csrf
                                 <div class="username">
                                     <label for="key" class="w-100">
-                                        <input id="key" type="text" placeholder="Activation key" class="@error('key') is-invalid @enderror" name="key" value="{{ old('key') }}" required autocomplete="kry" minlength="15" maxlength="15" autofocus>
+                                        <input id="key" type="text" placeholder="Activation key" class="@error('key') is-invalid @enderror" name="key" value="{{ old('key') }}" required autocomplete="key" minlength="15" maxlength="15" autofocus>
 
                                         @error('key')
                                         <span class="invalid-feedback" role="alert">

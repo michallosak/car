@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\Auth\ActivateRequest;
-use App\Supports\Auth\Activate;
-use Illuminate\Http\Request;
+use App\Supports\Verify\VerifyEmail;
 use App\Http\Controllers\Controller;
 
 class ActivateController extends Controller
 {
-    private $activate;
+    private $verify;
 
-    public function __construct(Activate $activate)
+    public function __construct(VerifyEmail $verify)
     {
-        $this->activate = $activate;
+        $this->verify = $verify;
     }
 
     public function view(){
@@ -21,7 +20,7 @@ class ActivateController extends Controller
     }
 
     public function activate(ActivateRequest $request){
-        $this->activate->activate($request);
+        $this->verify->activate($request->key);
         return redirect(route('home'));
     }
 }
