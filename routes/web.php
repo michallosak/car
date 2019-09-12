@@ -32,5 +32,6 @@ Route::group(['middleware' => 'auth'], function (){
        Route::get('added-cars', 'Account\Admin\ProfileController@addedCars')->name('added_cars');
        Route::resource('category', 'CategoryController');
        Route::get('categories', 'CategoryController@index')->name('categories');
+       Route::resource('photo', 'Photo\PhotoController');
     });
 });

@@ -3,19 +3,21 @@
 
 namespace App\Supports\Car;
 
-
 use App\Model\Car\Car;
 use App\Model\Car\SpecificInf;
+use App\Supports\Photo\UploadPhoto;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CreateCar
 {
     private $car;
+    private $uploadPhoto;
 
-    public function __construct(Car $car)
+    public function __construct(Car $car, UploadPhoto $uploadPhoto)
     {
         $this->car = $car;
+        $this->uploadPhoto = $uploadPhoto;
     }
 
     public function addCar($data){
@@ -29,6 +31,7 @@ class CreateCar
                 'quantity' => $data->quantity
             ]);
             $this->addSpecificInfCar($car->id, $data);
+            $this->uploadPhoto->upload($car->id, $data);
         });
     }
 

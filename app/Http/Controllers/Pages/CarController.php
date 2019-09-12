@@ -41,7 +41,7 @@ class CarController extends Controller
     // Add new car
     public function store(CreateCarRequest $request){
         $this->createCar->addCar($request);
-        return redirect(route('added-cars'));
+        return redirect(route('added_cars'));
     }
 
     public function show($id){
@@ -51,7 +51,8 @@ class CarController extends Controller
 
     public function destroy(Car $car){
         $car->delete();
-        return redirect(route('added_cars'));
+        $car->photos()->delete();
+        return redirect()->back();
     }
 
     public function edit($id){

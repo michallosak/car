@@ -3287,3 +3287,26 @@ button.btn-delete-car:hover{
     color: red;
     margin-top: 12px;
 }
+.trash-photo {
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    background: #de0f0f;
+    color: #FFF;
+    font-weight: 700;
+    border-radius: 21%;
+    margin: 3px;
+}
+.photo-edit {
+    position: relative;
+}
+.photo-edit img {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+.trash-photo:hover{
+    cursor: pointer;
+}

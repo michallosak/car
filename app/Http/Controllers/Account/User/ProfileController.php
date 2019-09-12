@@ -3,23 +3,25 @@
 namespace App\Http\Controllers\Account\User;
 
 use App\Http\Controllers\Controller;
-use App\Supports\User\RentRepo;
+use App\Supports\Rent\GetRent;
 
 class ProfileController extends Controller
 {
-    private $rent;
+    private $getRent;
 
-    public function __construct(RentRepo $rent)
+    public function __construct(GetRent $getRent)
     {
-        $this->rent = $rent;
+        $this->getRent = $getRent;
     }
 
-    public function index(){
+    public function index()
+    {
         return view('user.index');
     }
 
-    public function rentedCars(){
-        $rents = $this->rent->rentedCars();
+    public function rentedCars()
+    {
+        $rents = $this->getRent->rentedCars();
         return view('user.cars.rented', compact('rents'));
     }
 }

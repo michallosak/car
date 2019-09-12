@@ -20,9 +20,11 @@
                                 <div class="col-lg-4 col-md-6 con suv mpv">
                                     <div class="single-popular-car">
                                         <div class="p-car-thumbnails">
-                                            <a class="car-hover" href="{{ asset('img/car/car-1.jpg') }}">
-                                                <img src="https://f1.media.brightcove.com/8/1078702682/1078702682_6004950245001_6004956161001-vs.jpg?pubId=1078702682&videoId=6004956161001" alt="{{ $car->model }}">
-                                            </a>
+
+                                                @foreach($car->photos->slice(0, 1) as $photo)
+                                                    <img class="w-100" src="{{ asset('image/'.$photo->src) }}" alt="{{ $car->model }}">
+                                                @endforeach
+
                                         </div>
 
                                         <div class="p-car-content">
@@ -41,8 +43,9 @@
                                             </div>
                                             <div class="mt-2">
                                                 <a href="{{ route('car_edit', ['id' => $car->id]) }}" title="Edit">{{ __('Edit') }}</a>
-                                                <form method="post" action="{{ route('car.destroy', ['id' => $car->id]) }}">
+                                                <form method="post" action="{{ route('car.destroy', $car->id) }}">
                                                     @csrf
+                                                    @method('DELETE')
                                                     <button type="submit" class="btn-delete-car">{{__('DELETE')}}</button>
                                                 </form>
                                             </div>

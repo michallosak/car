@@ -17,7 +17,7 @@ class EditCar
 
     public function edit($id)
     {
-        $car = $this->car->with('s')
+        $car = $this->car->with('s', 'photos')
             ->find($id);
         return $car;
     }

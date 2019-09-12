@@ -20,7 +20,7 @@ class Rent extends Model
     }
 
     public function car(){
-        return $this->belongsTo(Car::class)
+        return $this->belongsTo(Car::class, 'car_id', 'id')
             ->with(['s', 'photos']);
     }
 }

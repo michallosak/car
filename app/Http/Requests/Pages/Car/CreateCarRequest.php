@@ -26,9 +26,9 @@ class CreateCarRequest extends FormRequest
         return [
             'category_id' => 'required',
             'model' => 'required|string|min:10|max:150',
-            'rent' => 'required',
-            'description' => 'required|text|min:100|max:1000',
-            'quantity' => 'required|integer',
+            //'rent' => 'required',
+            'description' => 'required|min:100|max:1000',
+            //'quantity' => 'required|integer',
             'year_production' => 'required|integer',
             'engine_capacity' => 'required',
             'fuel' => 'required|string',
@@ -38,7 +38,9 @@ class CreateCarRequest extends FormRequest
             'color' => 'required|string|min:3',
             'transmission' => 'required|string',
             'driver' => 'required|string',
-            'country' => 'required|string'
+            'country' => 'required|string',
+            'images' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

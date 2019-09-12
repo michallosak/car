@@ -12,7 +12,7 @@
                 </div>
                 @include('layouts.admin')
                 <div class="card-body">
-                    <form method="post" action="{{ route('car.store') }}">
+                    <form method="post" action="{{ route('car.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <div class="col-lg-8 pr-1">
@@ -218,7 +218,10 @@
                                            class="form-control @error('country') is-invalid @enderror"/>
                                 </label>
                             </div>
-                            <div class="col-lg-2 offset-6">
+                            <div class="col-lg-6">
+                                <input required type="file" class="form-control" name="images[]" multiple>
+                            </div>
+                            <div class="col-lg-2">
                                 <button type="submit" class="btn btn-success w-100">
                                     {{__('Add car')}}
                                 </button>

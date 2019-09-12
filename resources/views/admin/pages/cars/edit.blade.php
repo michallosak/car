@@ -224,10 +224,45 @@
                                                class="form-control @error('country') is-invalid @enderror"/>
                                     </label>
                                 </div>
-                                <div class="col-lg-2 offset-6">
-                                    <button type="submit" class="btn btn-success w-100">
+                                <div class="col-lg-8">
+                                    <div class="row">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                    <button type="submit" class="btn btn-success">
                                         {{__('Edit')}}
                                     </button>
+
+                            </div>
+                        </form>
+                        <div class="title-page">{{__('Photos - ' . $car->model)}}}</div>
+                        <div class="form-group row" style="margin: 0 -4px">
+                            @foreach($car->photos as $photo)
+                                <div class="col-lg-2 pr-1 pl-1">
+                                    <div class="photo-edit">
+                                        <form method="post" action="{{ route('photo.destroy', $photo->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="trash-photo">X</button>
+                                        </form>
+                                        <img src="{{ asset('image/'.$photo->src) }}" alt="{{ $photo->src }}">
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="title-page">{{ __('Add photo - ') . $car->model }}</div>
+                        <form method="post" action="{{ route('photo.store') }}">
+                            @csrf
+                            <div class="form-group row">
+                                <div class="col-lg-10">
+                                    <input required type="file" class="form-control" name="images[]" multiple>
+                                </div>
+                                <input type="hidden" name="car_id" value="{{ $car->id }}"/>
+                                <div class="col-lg-2">
+                                    <button type="submit" class="btn btn-success w-100"> {{__('Add')}}</button>
                                 </div>
                             </div>
                         </form>

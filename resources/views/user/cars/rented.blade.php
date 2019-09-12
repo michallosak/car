@@ -10,16 +10,16 @@
                         @foreach($rents as $rent)
                             <div class="col-lg-4 mb-3">
                                 <div class="photo">
-                                    <img class="w-100" src="{{ asset('img/car/car-1.jpg') }}" alt="{{ $rent->car->model }}">
+                                    <img class="w-100" src="{{ asset('img/car/car-1.jpg') }}" alt="{{ $rent->car['model'] }}">
                                 </div>
 
                             </div>
                             <div class="col-lg-8">
                                 <div class="display-table-cell">
                                     <div class="car-list-info">
-                                        <h2><a href="#">{{ $rent->car->model }}</a></h2>
+                                        <h2><a href="#">{{ $rent->car['model'] }}</a></h2>
                                         <h5>{{ $rent->price }} $ /per a {{ $rent->day }} @if($rent->day > 1) {{ __('Days')  }} @else {{ __('Day') }} @endif</h5>
-                                        <p>{{ Str::limit($rent->car->description, 100) }}</p>
+                                        <p>{{ Str::limit($rent->car['description'], 100) }}</p>
                                         <ul class="car-info-list">
                                             Rent from: {{ $rent->from }} to: {{ $rent->to }}
                                         </ul>
