@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Supports\Category\GetCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $getCategory;
+
+    public function __construct(GetCategory $getCategory)
     {
-        $this->middleware('auth');
+        $this->getCategory = $getCategory;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        $categories = $this->getCategory->index();
+        return view('home', compact('categories'));
     }
 }

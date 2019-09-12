@@ -8,46 +8,30 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="book-a-car">
-                            <form action="index.html">
-                                <!--== Pick Up Location ==-->
-                                <div class="pickup-location book-item">
-                                    <h4>PICK-UP LOCATION:</h4>
-                                    <select class="custom-select">
-                                        <option selected>Select</option>
-                                        <option value="1">Dhaka</option>
-                                        <option value="2">Comilla</option>
-                                        <option value="3">Barishal</option>
-                                        <option value="3">Rangpur</option>
-                                    </select>
-                                </div>
-                                <!--== Pick Up Location ==-->
+                            <form action="{{ route('search') }}" method="get">
 
-                                <!--== Pick Up Date ==-->
+                                <!--== Model Car ==-->
                                 <div class="pick-up-date book-item">
-                                    <h4>PICK-UP DATE:</h4>
-                                    <input id="startDate" placeholder="Pick Up Date" />
+                                    <h4>MODEL CAR:</h4>
+                                    <input id="model" placeholder="Car model" name="model"/>
 
-                                    <div class="return-car">
-                                        <h4>Return DATE:</h4>
-                                        <input id="endDate" placeholder="Return Date" />
-                                    </div>
                                 </div>
-                                <!--== Pick Up Location ==-->
+                                <!--== Model Car ==-->
 
-                                <!--== Car Choose ==-->
+                                <!--== Category Choose ==-->
                                 <div class="choose-car-type book-item">
                                     <h4>CHOOSE CAR TYPE:</h4>
-                                    <select class="custom-select">
+                                    <select class="custom-select" name="category_id">
                                         <option selected>Select</option>
-                                        <option value="1">BMW</option>
-                                        <option value="2">Audi</option>
-                                        <option value="3">Lexus</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{$category->name}}</option>
+                                            @endforeach
                                     </select>
                                 </div>
-                                <!--== Car Choose ==-->
+                                <!--== Category Choose ==-->
 
                                 <div class="book-button text-center">
-                                    <button class="book-now-btn">Book Now</button>
+                                    <button type="submit" class="book-now-btn">Book Now</button>
                                 </div>
                             </form>
                         </div>

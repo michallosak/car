@@ -5,6 +5,7 @@ namespace App\Supports\Car;
 
 
 use App\Model\Car\Car;
+use App\Model\Car\Rent;
 
 class GetCars
 {
@@ -34,6 +35,15 @@ class GetCars
             ->orderBy('id', 'DESC')
             ->paginate(20);
 
+        return $cars;
+    }
+
+    // Status 403 the car was not returned
+    public function notReturned(){
+        $cars = $this->car->with(['s', 'photos'])
+            ->where('status', 403)
+            ->orderBy('id', 'DESC')
+            ->paginate(3);
         return $cars;
     }
 }

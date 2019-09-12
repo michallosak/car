@@ -23,6 +23,7 @@ class PhotoController extends Controller
 
     public function store(CreatePhotoRequest $request){
         $this->uploadPhoto->upload($request->car_id, $request);
+        echo $request->car_id;
         return redirect()->back();
     }
 }

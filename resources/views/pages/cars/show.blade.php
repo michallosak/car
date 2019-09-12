@@ -30,7 +30,15 @@
                 <div class="col-lg-8">
                     <div class="car-details-content">
                         <h2>{{ $car->model }}</h2>
-                            <img src="https://specials-images.forbesimg.com/imageserve/5d35eacaf1176b0008974b54/960x0.jpg?cropX1=790&cropX2=5350&cropY1=784&cropY2=3349" alt="{{ $car->model }}">
+                            <div class="row" style="margin: 0 -4px;">
+                                @foreach($car->photos as $photo)
+                                    <div class="col-lg-2 pl-1 pr-1">
+                                        <div class="photo-edit">
+                                            <img src="{{ asset('image/'.$photo->src) }}" alt="{{ $car->model }}">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
 
                         <div class="car-details-info blog-content">
 
@@ -46,7 +54,7 @@
                                     <div class="col-lg-4"><span>{{ __('Fuel: ').$car->s->fuel }}</span></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4"><span>{{ __('Power: ').$car->s->power }}</span></div>
+                                    <div class="col-lg-4"><span>{{ __('Power: ').$car->s->power . __(' KM') }}</span></div>
                                     <div class="col-lg-4"><span>{{ __('Course: ').$car->s->course }}</span></div>
                                     <div class="col-lg-4"><span>{{ __('Body type: ').$car->s->body_type }}</span></div>
                                 </div>

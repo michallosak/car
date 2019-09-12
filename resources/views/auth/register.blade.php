@@ -122,13 +122,6 @@
                             </form>
                         </div>
 
-                        <div class="login-other">
-                            <span class="or">or</span>
-                            <a href="#" class="login-with-btn facebook"><i class="fa fa-facebook"></i> Signup With
-                                Facebook</a>
-                            <a href="#" class="login-with-btn google"><i class="fa fa-google"></i> Signup With
-                                Google</a>
-                        </div>
                         <div class="create-ac">
                             <p>Have an account? <a href="{{ route('login') }}">Sign In</a></p>
                         </div>

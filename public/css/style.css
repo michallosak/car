@@ -3310,3 +3310,30 @@ button.btn-delete-car:hover{
 .trash-photo:hover{
     cursor: pointer;
 }
+.color-r{
+    color: red!important;
+}.color-g{
+    color: green!important;
+ }
+.acc-block {
+    font-size: 15px;
+    border: 1px solid #dedede;
+    margin: 5px 0;
+    border-radius: 3px;
+    padding: 6px;
+    background: #f9f7f7;
+    text-transform: uppercase;
+    font-weight: 600;
+}.acc-block span {
+     font-size: 12px;
+     text-transform: inherit;
+ }.acc-block a {
+      font-size: 11px;
+      text-transform: lowercase;
+  }
+.not-returned{
+    background: #f3eded;
+    border: 2px solid #ff6d6d;
+    border-radius: 4px;
+    padding: 5px;
+}

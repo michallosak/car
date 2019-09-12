@@ -254,13 +254,13 @@
                             @endforeach
                         </div>
                         <div class="title-page">{{ __('Add photo - ') . $car->model }}</div>
-                        <form method="post" action="{{ route('photo.store') }}">
+                        <form method="post" action="{{ route('photo.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
+                                <input type="hidden" name="car_id" value="{{ $car->id }}"/>
                                 <div class="col-lg-10">
                                     <input required type="file" class="form-control" name="images[]" multiple>
                                 </div>
-                                <input type="hidden" name="car_id" value="{{ $car->id }}"/>
                                 <div class="col-lg-2">
                                     <button type="submit" class="btn btn-success w-100"> {{__('Add')}}</button>
                                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Supports\Verify\VerifyEmail;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -30,14 +31,16 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    private $verifyEmail;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(VerifyEmail $verifyEmail)
     {
         $this->middleware('guest');
+        $this->verifyEmail = $verifyEmail;
     }
 
     /**
@@ -63,12 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'last_name' => $data['last_name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $this->verifyEmail->store($user->id);
+        return $user;
     }
 }

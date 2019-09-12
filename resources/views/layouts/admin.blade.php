@@ -7,6 +7,7 @@
         <div class="dropdown-menu">
             <a class="dropdown-item" href="{{ route('car.create') }}">Add</a>
             <a class="dropdown-item" href="{{ route('added_cars') }}">Added</a>
+            <a class="dropdown-item" href="{{ route('not_returned') }}">Not returned</a>
         </div>
     </li>
     <li class="nav-item dropdown">

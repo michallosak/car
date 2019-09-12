@@ -36,4 +36,5 @@ class GetRent
             ->paginate(3);
         return $rents;
     }
+
 }
